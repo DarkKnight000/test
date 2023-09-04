@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBFC"
+    tools:context=".MainActivity">
+    <ProgressBar
+        android:id="@+id/progBarMain"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:indeterminateTint="#0D72FF"
+        android:layout_centerInParent="true"
+        >
+    </ProgressBar>
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="Отель"
+                android:textColor="@color/black"
+                android:textSize="18sp">
+            </TextView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scrollImages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonLayout"
+        android:layout_below="@+id/lin"
+        android:background="#FBFBFC"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:id="@+id/relImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <androidx.viewpager2.widget.ViewPager2
+                                android:id="@+id/viewPagerMain"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </androidx.viewpager2.widget.ViewPager2>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="5dp"
+                                app:cardBackgroundColor="@color/white"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentBottom="true">
+
+                                <com.google.android.flexbox.FlexboxLayout
+                                    android:id="@+id/peculiaritiesImages"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:paddingEnd="10dp"
+                                    android:paddingStart="10dp"
+                                    app:alignItems="center"
+                                    app:flexDirection="row"
+                                    app:flexWrap="wrap"
+                                    app:justifyContent="center">
+                                </com.google.android.flexbox.FlexboxLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingHorizontal="5dp"
+                        android:background="#33FFC700"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/star">
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="05"
+                            android:textColor="#FFA800"
+                            android:textSize="16sp">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/rating_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0Превосходно"
+                            android:textColor="#FFA800"
+                            android:textSize="16sp">
+                        </TextView>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0Steigenberger Makadi"
+                        android:textSize="22sp"
+                        android:textColor="@color/black">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/adress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:text="0Madinat Makadi, Safaga Road, Makadi Bay, Египет"
+                        android:textSize="14sp"
+                        android:textColor="#0D72FF">
+                    </TextView>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="От "
+                            android:textSize="30sp"
+                            android:textColor="@color/black">
+                        </TextView>
+                        <TextView
+                            android:id="@+id/minimal_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0161 616"
+                            android:textSize="30sp"
+                            android:textColor="@color/black">
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" ₽"
+                            android:textSize="30sp"
+                            android:textColor="@color/black">
+                        </TextView>
+                        <TextView
+                            android:id="@+id/price_for_it"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0за тур с перелётом"
+                            android:textSize="16sp"
+                            android:layout_marginStart="10dp"
+                            android:textColor="#828796">
+                        </TextView>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Об отеле"
+                        android:textColor="@color/black"
+                        android:textSize="22sp">
+                    </TextView>
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/peculiarities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        app:flexWrap="wrap"
+                        app:justifyContent="flex_start"
+                        app:alignItems="center"
+                        app:flexDirection="row">
+                    </com.google.android.flexbox.FlexboxLayout>
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!"
+                        android:textSize="16sp"
+                        android:textColor="@color/black">
+                    </TextView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="15dp"
+                        app:cardBackgroundColor="#FBFBFC">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@color/white">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/comf"
+                                    android:layout_gravity="center">
+                                </ImageView>
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:drawableEnd="@drawable/arrow_next"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="start|center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:layout_marginStart="0dp"
+                                    android:text="Удобства"
+                                    android:textColor="@color/black"
+                                    app:cornerRadius="0dp"
+                                    app:elevation="0dp"
+                                    app:iconPadding="0dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless">
+                                </Button>
+                            </LinearLayout>
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="50dp">
+                            </com.google.android.material.divider.MaterialDivider>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@color/white">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/incl"
+                                    android:layout_gravity="center">
+                                </ImageView>
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:drawableEnd="@drawable/arrow_next"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="start|center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:layout_marginStart="0dp"
+                                    android:text="Что включено"
+                                    android:textColor="@color/black"
+                                    app:cornerRadius="0dp"
+                                    app:elevation="0dp"
+                                    app:iconPadding="0dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless">
+                                </Button>
+                            </LinearLayout>
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="50dp">
+                            </com.google.android.material.divider.MaterialDivider>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@color/white">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/notinc"
+                                    android:layout_gravity="center">
+                                </ImageView>
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:drawableEnd="@drawable/arrow_next"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="start|center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:layout_marginStart="0dp"
+                                    android:text="Что не включено"
+                                    android:textColor="@color/black"
+                                    app:cornerRadius="0dp"
+                                    app:elevation="0dp"
+                                    app:iconPadding="0dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless">
+                                </Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonOpenRooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_margin="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                app:cornerRadius="15dp"
+                android:text="К выбору номера">
+            </Button>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</RelativeLayout>

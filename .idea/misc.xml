@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/test/app/src/main/res/drawable/divider_custom.xml" value="0.207" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/activity_booking.xml" value="0.16799999999999998" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/activity_main.xml" value="0.31473829201101927" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/activity_payment.xml" value="0.264" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/activity_room.xml" value="0.264" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/divider_custom.xml" value="0.23802083333333332" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/image_slider_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/item_image.xml" value="0.2" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/item_room.xml" value="0.264" />
+        <entry key="..\:/Android/test/app/src/main/res/layout/item_tourist.xml" value="0.536" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
