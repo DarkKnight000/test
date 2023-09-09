@@ -22,7 +22,27 @@ import java.util.regex.Pattern
 class BookingActivity : AppCompatActivity()
 {
     lateinit var phone_number: EditText
+    lateinit var scrollBooking: NestedScrollView
+    lateinit var progBookingBar: ProgressBar
+    lateinit var hotel_name: TextView
+    lateinit var hotel_name2: TextView
+    lateinit var hotel_adress: TextView
+    lateinit var horating: TextView
+    lateinit var rating_name: TextView
+    lateinit var departure: TextView
+    lateinit var arrival_country: TextView
+    lateinit var tour_date_start: TextView
+    lateinit var tour_date_stop: TextView
+    lateinit var number_of_nights: TextView
+    lateinit var room: TextView
+    lateinit var nutrition: TextView
+    lateinit var tour_price: TextView
+    lateinit var fuel_charge: TextView
+    lateinit var service_charge: TextView
+    lateinit var total_price: TextView
     lateinit var emailEditView: EditText
+    lateinit var buttonPay: Button
+
     private val itemList = mutableListOf<String>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AddTouristAdapter
@@ -147,29 +167,53 @@ class BookingActivity : AppCompatActivity()
             }
         })
 
-        val scrollBooking: NestedScrollView = findViewById(R.id.scrollBooking)
-        val progBookingBar: ProgressBar = findViewById(R.id.progBookingBar)
+        scrollBooking = findViewById(R.id.scrollBooking)
+        progBookingBar = findViewById(R.id.progBookingBar)
 
-        val hotel_name: TextView = findViewById(R.id.hotel_name)
-        val hotel_name2: TextView = findViewById(R.id.hotel_name2)
-        val hotel_adress: TextView = findViewById(R.id.hotel_adress)
-        val horating: TextView = findViewById(R.id.horating)
-        val rating_name: TextView = findViewById(R.id.rating_name)
-        val departure: TextView = findViewById(R.id.departure)
-        val arrival_country: TextView = findViewById(R.id.arrival_country)
-        val tour_date_start: TextView = findViewById(R.id.tour_date_start)
-        val tour_date_stop: TextView = findViewById(R.id.tour_date_stop)
-        val number_of_nights: TextView = findViewById(R.id.number_of_nights)
-        val room: TextView = findViewById(R.id.room)
-        val nutrition: TextView = findViewById(R.id.nutrition)
-        val tour_price: TextView = findViewById(R.id.tour_price)
-        val fuel_charge: TextView = findViewById(R.id.fuel_charge)
-        val service_charge: TextView = findViewById(R.id.service_charge)
-        val total_price: TextView = findViewById(R.id.total_price)
+        hotel_name = findViewById(R.id.hotel_name)
+        hotel_name2 = findViewById(R.id.hotel_name2)
+        hotel_adress = findViewById(R.id.hotel_adress)
+        horating = findViewById(R.id.horating)
+        rating_name = findViewById(R.id.rating_name)
+        departure = findViewById(R.id.departure)
+        arrival_country = findViewById(R.id.arrival_country)
+        tour_date_start = findViewById(R.id.tour_date_start)
+        tour_date_stop = findViewById(R.id.tour_date_stop)
+        number_of_nights = findViewById(R.id.number_of_nights)
+        room = findViewById(R.id.room)
+        nutrition = findViewById(R.id.nutrition)
+        tour_price = findViewById(R.id.tour_price)
+        fuel_charge = findViewById(R.id.fuel_charge)
+        service_charge = findViewById(R.id.service_charge)
+        total_price = findViewById(R.id.total_price)
         emailEditView = findViewById(R.id.emailEditView)
 
-        val buttonPay: Button = findViewById(R.id.buttonPay)
+        buttonPay = findViewById(R.id.buttonPay)
 
+
+        getBookingData()
+
+        recyclerView = findViewById(R.id.rec_tourists)
+        adapter = AddTouristAdapter(itemList)
+        recyclerView.adapter = adapter
+
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+        adapter.addItem("Первый турист")
+        i++
+
+        val addButton = findViewById<Button>(R.id.addTouristButton)
+        addButton.setOnClickListener {
+            val russianOrdinal = i.toRussianOrdinal()
+            val newText = "$russianOrdinal турист"
+            adapter.addItem(newText)
+            i++
+        }
+    }
+
+    fun getBookingData()
+    {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://run.mocky.io/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -205,13 +249,13 @@ class BookingActivity : AppCompatActivity()
                     tour_price.text = booking?.tour_price.toString()
                     fuel_charge.text = booking?.fuel_charge.toString()
                     service_charge.text = booking?.service_charge.toString()
-                    var total1: Int = (booking?.tour_price ?: Int) as Int
-                    var total2: Int = (booking?.fuel_charge ?: Int) as Int
-                    var total3: Int = (booking?.service_charge ?: Int) as Int
-                    var total = total1 + total2 + total3
+                    val total1: Int = (booking?.tour_price ?: Int) as Int
+                    val total2: Int = (booking?.fuel_charge ?: Int) as Int
+                    val total3: Int = (booking?.service_charge ?: Int) as Int
+                    val total = total1 + total2 + total3
 
                     total_price.text = total.toString()
-                    buttonPay.text = "Оплатить " + total.toString() + " ₽"
+                    buttonPay.text = "Оплатить $total ₽"
 
 
                 }
@@ -227,27 +271,10 @@ class BookingActivity : AppCompatActivity()
             }
         })
 
-        recyclerView = findViewById(R.id.rec_tourists)
-        adapter = AddTouristAdapter(itemList)
-        recyclerView.adapter = adapter
-
-        // Пример добавления LinearLayoutManager:
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-
-        adapter.addItem("Первый турист")
-        i++
-
-        val addButton = findViewById<Button>(R.id.addTouristButton)
-        addButton.setOnClickListener {
-            val russianOrdinal = i.toRussianOrdinal()
-            val newText = "$russianOrdinal турист"
-            adapter.addItem(newText)
-            i++
-        }
     }
 
-    fun Int.toRussianOrdinal(): String {
+    fun Int.toRussianOrdinal(): String
+    {
         val ones = arrayOf("Первый", "Второй", "Третий", "Четвёртый", "Пятый", "Шестой", "Седьмой", "Восьмой", "Девятый")
         val teens = arrayOf("Одиннадцатый", "Двенадцатый", "Тринадцатый", "Четырнадцатый", "Пятнадцатый", "Шестнадцатый", "Семнадцатый", "Восемнадцатый", "Девятнадцатый")
         val tens = arrayOf("Десятый", "Двадцатый", "тридцатый", "сороковой", "пятидесятый", "шестидесятый", "семидесятый", "восьмидесятый", "девяностый")

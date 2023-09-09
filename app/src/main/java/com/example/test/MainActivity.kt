@@ -23,28 +23,35 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity()
 {
-    var countImages: Int = 0
-    var hotelname = ""
+    private var countImages: Int = 0
+    private var hotelname = ""
+
+    private lateinit var rating: TextView
+    private lateinit var rating_name: TextView
+    private lateinit var name: TextView
+    private lateinit var adress: TextView
+    private lateinit var minimal_price: TextView
+    private lateinit var price_for_it: TextView
+    private lateinit var description: TextView
+    private lateinit var flexboxLayout: FlexboxLayout
+    private lateinit var scrollImages: ScrollView
+    private lateinit var progBarMain: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rating: TextView = findViewById(R.id.rating)
-        val rating_name: TextView = findViewById(R.id.rating_name)
-        val name: TextView = findViewById(R.id.name)
-        val adress: TextView = findViewById(R.id.adress)
-        val minimal_price: TextView = findViewById(R.id.minimal_price)
-        val price_for_it: TextView = findViewById(R.id.price_for_it)
-        val description: TextView = findViewById(R.id.description)
-        val flexboxLayout: FlexboxLayout = findViewById(R.id.peculiarities)
-        val scrollImages: ScrollView = findViewById(R.id.scrollImages)
-        val progBarMain: ProgressBar = findViewById(R.id.progBarMain)
-
-        //val recyclerView: RecyclerView = findViewById(R.id.viewPagerMain)
-        /*val recyclerView: RecyclerView = findViewById(R.id.viewPagerMain)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.layoutManager = layoutManager*/
+        rating = findViewById(R.id.rating)
+        rating_name = findViewById(R.id.rating_name)
+        name = findViewById(R.id.name)
+        adress = findViewById(R.id.adress)
+        minimal_price = findViewById(R.id.minimal_price)
+        price_for_it = findViewById(R.id.price_for_it)
+        description = findViewById(R.id.description)
+        flexboxLayout = findViewById(R.id.peculiarities)
+        scrollImages = findViewById(R.id.scrollImages)
+        progBarMain = findViewById(R.id.progBarMain)
 
         val openButton: Button = findViewById(R.id.buttonOpenRooms)
         openButton.setOnClickListener{
@@ -53,7 +60,12 @@ class MainActivity : AppCompatActivity()
             startActivity(intent)
         }
 
+        getHotelData()
 
+    }
+
+    private fun getHotelData()
+    {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://run.mocky.io/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -71,18 +83,13 @@ class MainActivity : AppCompatActivity()
                 {
                     val hotel = response.body()
 
-
                     scrollImages.visibility = View.VISIBLE
                     progBarMain.visibility = View.INVISIBLE
 
-                    // Выведите данные на экран, например, в TextView и ImageView
                     rating.text = hotel?.rating.toString()
                     rating_name.text = hotel?.rating_name
                     name.text = hotel?.name
-
                     hotelname = hotel?.name.toString()
-                    Log.e("name","" + hotelname)
-
                     adress.text = hotel?.adress
                     minimal_price.text = hotel?.minimal_price.toString()
                     price_for_it.text = hotel?.price_for_it
@@ -151,17 +158,15 @@ class MainActivity : AppCompatActivity()
                 }
                 else
                 {
-                    // Обработайте ошибку
+
                 }
             }
 
             override fun onFailure(call: Call<Hotel>, t: Throwable)
             {
-                // Обработайте ошибку
+
             }
         })
-
-
     }
 
     fun updateFlexboxImages(currentPosition: Int)

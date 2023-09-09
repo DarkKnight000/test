@@ -53,13 +53,18 @@ class RoomActivity : AppCompatActivity()
         recyclerView.adapter = adapter
 
         val hotelName = intent.getStringExtra("HOTEL_NAME")
-        if (hotelName != null) {
-            // Используйте hotelName в RoomActivity
-            // Например, установите его в TextView
+        if (hotelName != null)
+        {
             val hotel_name: TextView = findViewById(R.id.hotel_name)
             hotel_name.text = hotelName
         }
 
+        getRoomData()
+
+    }
+
+    private fun getRoomData()
+    {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://run.mocky.io/") // Базовая часть URL
             .addConverterFactory(GsonConverterFactory.create()) // Конвертер для преобразования JSON в объекты
@@ -98,6 +103,5 @@ class RoomActivity : AppCompatActivity()
                 Log.e("MainActivity", "Error: ${t.message}")
             }
         })
-
     }
 }
